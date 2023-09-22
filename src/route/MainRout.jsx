@@ -3,7 +3,7 @@ import Root from "../components/Root/Root";
 import Home from "../components/Home/Home";
 import Appliedjobs from "../components/Appliedjobs/Appliedjobs";
 import Error from "../components/Error page/Error";
-import JobDetails from "../components/Home/JobDetails/JobDetails";
+import JobDetails from "../components/JobDetails/JobDetails";
 
 
 const MainRoute = createBrowserRouter([

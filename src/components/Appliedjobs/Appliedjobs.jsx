@@ -1,9 +1,11 @@
+import CommonBanner from "../CommonBanner/CommonBanner";
 
 const Appliedjobs = () => {
     return (
-        <div>
+        <>
+        <CommonBanner>Applied Jobs</CommonBanner>
             <h1>Jobs I applied</h1>
-        </div>
+        </>
     );
 };
 
