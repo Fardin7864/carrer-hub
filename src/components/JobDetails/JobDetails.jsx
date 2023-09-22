@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import {
   AiOutlineDollar,
   AiOutlineAccountBook,
@@ -7,6 +7,9 @@ import {
 } from "react-icons/ai";
 import { FaLocationDot } from "react-icons/fa6";
 import CommonBanner from "../CommonBanner/CommonBanner";
+import { addToLocalStorage } from "../LocalStorage/SetandGet";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const JobDetails = () => {
   const jobs = useLoaderData();
@@ -22,10 +25,44 @@ const JobDetails = () => {
     job_title,
     salary,
   } = job;
-  // console.log(jobs, id, job);
+
+  const notify = (e) => {
+    e.preventDefault();
+    toast('🦄 Wow so easy!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
+
+  const handleApply = (e) => {
+    notify(e);
+    addToLocalStorage(idInt);
+  }
+
+
   return (
     <>
       <CommonBanner>Job Details</CommonBanner>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        />
+        {/* Same as */}
+        <ToastContainer />
       {/* Details */}
       <div className="mt-32 flex justify-center gap-9 mb-20">
         <div className="flex flex-col w-1/2">
@@ -88,8 +125,8 @@ const JobDetails = () => {
             </p>
           </div>
           <div className="w-full">
-            <button className=" w-full mt-6 py-3 px-4 rounded-lg bg-gradient-to-b from-[#7E90FE] to-[#9873FF] text-white font-bold text-xl hover:shadow-lg focus:bg-blue-900">
-              Apply Now
+            <button onClick={handleApply} className=" w-full mt-6 py-3 px-4 rounded-lg bg-gradient-to-b from-[#7E90FE] to-[#9873FF] text-white font-bold text-xl hover:shadow-lg focus:bg-blue-900">
+              <Link>Apply Now</Link>
             </button>
           </div>
         </div>
